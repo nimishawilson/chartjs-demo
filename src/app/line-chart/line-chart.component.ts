@@ -19,8 +19,8 @@ export class LineChartComponent implements OnInit, AfterViewInit {
   private chart!: Chart;
   private readonly data: Point[] = [
     { x: 2, y: 5 },
-    { x: 2, y: 10 },
-    { x: 3, y: 6 },
+    { x: 3, y: 10 },
+    { x: 3.5, y: 6 },
     { x: 4, y: 2 },
     { x: 4.1, y: 6 },
   ];
@@ -42,11 +42,11 @@ export class LineChartComponent implements OnInit, AfterViewInit {
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        // scales: {
-        //   xAxis: [{
-        //     type: 'linear'
-        //   }],
-        // }
+        scales: {
+          xAxis: {
+            type: 'linear'
+          }
+        }
       },
     });
   }
