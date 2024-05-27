@@ -8,11 +8,12 @@ import {
 import { Chart, Point } from 'chart.js/auto';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-line-chart',
+  templateUrl: './line-chart.component.html',
+  styleUrls: ['./line-chart.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class LineChartComponent implements OnInit {
+
   @ViewChild('chart')
   private chartRef!: ElementRef;
   private chart!: Chart;
@@ -48,9 +49,5 @@ export class AppComponent implements OnInit, AfterViewInit {
         // }
       },
     });
-  }
-
-  createChart() {
-  
   }
 }
