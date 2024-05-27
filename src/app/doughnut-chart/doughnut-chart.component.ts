@@ -5,18 +5,17 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { Chart, Point } from 'chart.js/auto';
+import Chart, { Point } from 'chart.js/auto';
 
 @Component({
-  selector: 'app-line-chart',
-  templateUrl: './line-chart.component.html',
-  styleUrls: ['./line-chart.component.scss']
+  selector: 'app-doughnut-chart',
+  templateUrl: './doughnut-chart.component.html',
+  styleUrls: ['./doughnut-chart.component.scss'],
 })
-export class LineChartComponent implements OnInit, AfterViewInit {
-
+export class DoughnutChartComponent implements OnInit, AfterViewInit {
   @ViewChild('chart')
   private chartRef!: ElementRef;
-  private chart!: Chart;
+   chart!: Chart;
   private readonly data: Point[] = [
     { x: 2, y: 5 },
     { x: 2, y: 10 },
@@ -29,24 +28,25 @@ export class LineChartComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.chart = new Chart(this.chartRef.nativeElement, {
-      type: 'line',
+      type: 'doughnut',
       data: {
+        labels: ['Red', 'Blue', 'Yellow'],
         datasets: [
           {
-            label: 'Interesting Data',
-            data: this.data,
-            fill: false,
+            label: 'My First Dataset',
+            data: [300, 50, 100],
+            backgroundColor: [
+              'rgb(255, 99, 132)',
+              'rgb(54, 162, 235)',
+              'rgb(255, 205, 86)',
+            ],
+            hoverOffset: 4,
           },
         ],
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        // scales: {
-        //   xAxis: [{
-        //     type: 'linear'
-        //   }],
-        // }
       },
     });
   }
